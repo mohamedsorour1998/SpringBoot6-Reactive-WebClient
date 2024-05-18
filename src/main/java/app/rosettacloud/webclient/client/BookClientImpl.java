@@ -16,7 +16,7 @@ public class BookClientImpl implements BookClient {
 
     public BookClientImpl(WebClient.Builder wBuilder) {
 
-        this.webClient = wBuilder.baseUrl("http://localhost:8080").build();
+        this.webClient = wBuilder.build();
     }
 
     @Override
