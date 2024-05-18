@@ -22,4 +22,10 @@ public class BookClientImplTest {
         bookClient.listBooksMap().subscribe(
                 res -> System.out.println(res));
     }
+
+    @Test
+    void testListBookDTO() {
+        bookClient.listBooksDTO().subscribe(
+                res -> System.out.println(res.getBookName()));
+    }
 }

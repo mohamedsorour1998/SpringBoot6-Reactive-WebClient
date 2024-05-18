@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import app.rosettacloud.webclient.model.BookDTO;
 import reactor.core.publisher.Flux;
 
 @Service
@@ -20,14 +21,20 @@ public class BookClientImpl implements BookClient {
 
     @Override
     public Flux<String> listBooks() {
-        return webClient.get().uri(API_V3_BOOK, String.class)
+        return webClient.get().uri(API_V3_BOOK)
                 .retrieve().bodyToFlux(String.class);
     }
 
     @Override
     public Flux<Map> listBooksMap() {
-        return webClient.get().uri(API_V3_BOOK, Map.class)
+        return webClient.get().uri(API_V3_BOOK)
                 .retrieve().bodyToFlux(Map.class);
+    }
+
+    @Override
+    public Flux<BookDTO> listBooksDTO() {
+        return webClient.get().uri(API_V3_BOOK)
+                .retrieve().bodyToFlux(BookDTO.class);
     }
 
 }
